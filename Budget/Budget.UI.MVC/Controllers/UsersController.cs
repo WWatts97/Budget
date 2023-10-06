@@ -44,8 +44,26 @@ namespace Budget.UI.MVC.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
-        public IActionResult Create()
+		// GET: Users/Calendar
+		public async Task<IActionResult> Calendar(int? id)
+		{
+			if (id == null || _context.Users == null)
+			{
+				return NotFound();
+			}
+
+			var user = await _context.Users
+				.FirstOrDefaultAsync(m => m.UserId == id);
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			return View(user);
+		}
+
+		// GET: Users/Create
+		public IActionResult Create()
         {
             return View();
         }
