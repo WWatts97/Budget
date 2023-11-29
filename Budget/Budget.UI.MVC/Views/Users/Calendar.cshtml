@@ -1,13 +1,16 @@
 ﻿@model Budget.DATA.EF.Models.User
 
 @{
-    ViewData["Title"] = "Calendar";
+	ViewData["Title"] = "Calendar";
+	string stBal = String.Format("{0:C}", Model.Balance);
 }
+
 <body>
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center">
 					<h2 class="heading-section">@Model.FirstName's Calendar</h2>
+				<h6>Balance-@stBal</h6>
 				</div>
 			</div>
 			<div class="row">
