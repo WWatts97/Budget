@@ -40,4 +40,14 @@ namespace Budget.DATA.EF
     {
 
     }
+
+    public class GroceryMetadata
+    {
+        public string Name { get; set; } = null!;
+        public string? Store { get; set; }
+        public decimal? Price { get; set; }
+        public string? Unit { get; set; }
+        public decimal? Amount { get; set; }
+        public decimal? PricePerUnit { get; set; }
+    }
 }

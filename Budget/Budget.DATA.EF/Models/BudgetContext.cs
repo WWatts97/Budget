@@ -24,6 +24,7 @@ namespace Budget.DATA.EF.Models
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; } = null!;
         public virtual DbSet<Event> Events { get; set; } = null!;
         public virtual DbSet<EventType> EventTypes { get; set; } = null!;
+        public virtual DbSet<Grocery> Groceries { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<UserEvent> UserEvents { get; set; } = null!;
 
@@ -32,7 +33,7 @@ namespace Budget.DATA.EF.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=Budget;Trusted_Connection=True;MultipleActiveResultSets=true;");
+                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=Budget;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
 
@@ -164,6 +165,21 @@ namespace Budget.DATA.EF.Models
                 entity.Property(e => e.EventTypeName)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Grocery>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Amount).HasColumnType("money");
+
+                entity.Property(e => e.Name).HasMaxLength(50);
+
+                entity.Property(e => e.Price).HasColumnType("money");
+
+                entity.Property(e => e.Store).HasMaxLength(50);
+
+                entity.Property(e => e.Unit).HasMaxLength(50);
             });
 
             modelBuilder.Entity<User>(entity =>

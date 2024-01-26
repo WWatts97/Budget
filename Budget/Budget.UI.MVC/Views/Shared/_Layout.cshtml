@@ -20,7 +20,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/calendar-04/css/style.css">
-
+    <!-- Custom styles for this page -->
+    <link href="~/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -120,6 +121,8 @@
                         <a class="collapse-item" asp-controller="EventTypes" asp-action="Index">EventTypes</a>
                         <h6 class="collapse-header">UserEvents:</h6>
                         <a class="collapse-item" asp-controller="UserEvents" asp-action="Index">UserEvents</a>
+                        <h6 class="collapse-header">Grocery Comparer:</h6>
+                        <a class="collapse-item" asp-controller="Groceries" asp-action="Index">Grocery Comparer</a>
                     </div>
                 </div>
             </li>
@@ -455,6 +458,10 @@
     <script src="~/calendar-04/js/jquery.min.js"></script>
     <script src="~/calendar-04/js/popper.js"></script>
     <script src="~/calendar-04/js/main.js"></script>
+    <!-- Page level plugins -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </body>
 
 </html>
+
+@await RenderSectionAsync("Scripts", required: false)
